@@ -1,0 +1,19 @@
+.board {
+  opacity: 0.75;
+  margin-left: -90px;
+}
+
+.board > .row {
+  margin-top: -50px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.board > .row:nth-child(2n) {
+  margin-left: 95px;
+}
+
+.row > div:not(:first-child) {
+  margin-left: 70px;
+}
