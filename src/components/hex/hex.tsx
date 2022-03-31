@@ -1,25 +1,30 @@
 // SVG Hexagon path from http://stackoverflow.com/a/36842587/507674
 
-import type { Component } from 'solid-js';
+import { createSignal } from 'solid-js';
+
+import { Component, createEffect } from 'solid-js';
 
 import styles from './hex.module.css';
 
-import { TerrainType } from '../terrain/TerrainTypes';
+import { TerrainType, terrainTypes } from '../terrain/TerrainTypes';
 
 interface HexProps {
   cellIndex: number;
+  isActiveHex: boolean;
   onClick?: (e: any) => void; 
   rowIndex: number;
   terrainType: TerrainType;
 }
 
-export const Hex: Component<HexProps> = ({ 
-  cellIndex, 
-  onClick, 
-  rowIndex, 
-  terrainType
- }) => {
-  const {svgPath, backgroundColor} = terrainType;
+export const Hex: Component<HexProps> = (props) => {
+  const [borderColor, setBorderColor] = createSignal("#888");
+
+  
+  createEffect(() => {
+    props.isActiveHex
+    ? setBorderColor("#b66")
+    : setBorderColor("#888");
+  })
 
   return (
     <div class={styles.hexContainer}>
@@ -47,11 +52,11 @@ export const Hex: Component<HexProps> = ({
           x="0" 
           y="0" 
           // @ts-ignore
-          fill={backgroundColor} 
+          fill={props.terrainType.backgroundColor} 
         /> 
         
         <image 
-          href={svgPath} 
+          href={props.terrainType.svgPath} 
           x="0" 
           y="0" 
           width="120px" 
@@ -64,19 +69,19 @@ export const Hex: Component<HexProps> = ({
           x="0" 
           y="0" 
           // @ts-ignore
-          stroke="#888" 
+          stroke={borderColor()}
           stroke-width="5" 
           fill="transparent"
         />
 
       </svg>
-      
+
       <div 
         class={styles.hexOverlay}
-        onClick={() => onClick?.({
-          cellIndex,
-          rowIndex,
-          terrainType
+        onClick={() => props.onClick?.({
+          cellIndex: props.cellIndex,
+          rowIndex: props.rowIndex,
+          terrainType: props.terrainType
         })}
       />
     </div>
