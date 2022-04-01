@@ -28,10 +28,12 @@ const Board: Component = () => {
   const handleClickHex = ((cellData: handleClickHexProps) => {
     const { cellIndex, rowIndex, terrainType } = cellData;
 
+    console.log('coordinates:', { rowIndex, cellIndex })
+
     setCoordinatesOfActiveHex({row: rowIndex, cell: cellIndex});
   });
 
-
+  // TODO: split this out; also make a board generator that takes a configuration to make static maps
   const generateRandomBoard = ({ height, width }: BoardDimensions): JSXElement => {
     const ROWS_AT_TOP = 1;
     const ROWS_AT_BOTTOM = 2;
@@ -74,15 +76,24 @@ const Board: Component = () => {
 
                         const terrainType = getRandomTerrainType();
 
-                        const isActive = (
-                          (coordinatesOfActiveHex()?.row ?? 0) + 1 === rowIndex() 
-                          && (coordinatesOfActiveHex()?.cell ?? 0) + 1 === cellIndex()
-                        );
+                        // const getIsActive = () => {
+                        //   const isThisActive = (
+                        //     (coordinatesOfActiveHex()?.row ?? 0) + 1 === rowIndex() 
+                        //     && (coordinatesOfActiveHex()?.cell ?? 0) + 1 === cellIndex()
+                        //   );
+                          
+                        //   console.log({ isThisActive })
+
+                        //   return isThisActive;
+                        // };
 
                         return (
                           <Hex
-                            cellIndex={cellIndex() - CELLS_AT_LEFT_AND_RIGHT}
-                            isActiveHex={isActive}
+                            cellIndex={IS_ODD_ROW ? cellIndex() : cellIndex() - CELLS_AT_LEFT_AND_RIGHT}
+                            isActiveHex={(
+                              coordinatesOfActiveHex()?.row ?? 0) + ROWS_AT_TOP === rowIndex() 
+                              && ((coordinatesOfActiveHex()?.cell ?? 0) + (IS_ODD_ROW ? 0 : CELLS_AT_LEFT_AND_RIGHT) === cellIndex()
+                            )}
                             onClick={handleClickHex}
                             rowIndex={rowIndex() - ROWS_AT_TOP}
                             terrainType={terrainType}
@@ -102,7 +113,7 @@ const Board: Component = () => {
 
   return (
     <div class={styles.board}>
-      {generateRandomBoard({ height: 5, width: 2 })}
+      {generateRandomBoard({ height: 6, width: 3 })}
       {/* <div class={styles.row}>
         <Hex terrainType={terrainTypes.NONE} /> 
         <Hex terrainType={terrainTypes.NONE} /> 

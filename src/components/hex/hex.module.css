@@ -2,12 +2,12 @@
   opacity: 0.5;
 }
 
-.hexContainer:hover {
-  opacity: 0.9;
+.hexContainer.isActive {
+  opacity: 1;
 }
 
-.hexContainer:focus {
-
+.hexContainer:hover {
+  opacity: 0.9;
 }
 
 .hexOverlay {

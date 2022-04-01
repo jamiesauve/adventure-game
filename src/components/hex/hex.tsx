@@ -21,13 +21,15 @@ export const Hex: Component<HexProps> = (props) => {
 
   
   createEffect(() => {
+    console.log({ isActiveHex: props.isActiveHex })
+
     props.isActiveHex
     ? setBorderColor("#b66")
     : setBorderColor("#888");
   })
 
   return (
-    <div class={styles.hexContainer}>
+    <div class={`${styles.hexContainer} ${props.isActiveHex ? styles.isActive : ``}`}>
       <svg viewBox="0 0 120 100" style="width:120px;height:100px">
         <defs>
           <clipPath id="hexagon_clip">
@@ -78,11 +80,13 @@ export const Hex: Component<HexProps> = (props) => {
 
       <div 
         class={styles.hexOverlay}
-        onClick={() => props.onClick?.({
+        onClick={() => {
+          console.log('this hex:', { row: props.rowIndex, cell: props.cellIndex })
+          props.onClick?.({
           cellIndex: props.cellIndex,
           rowIndex: props.rowIndex,
           terrainType: props.terrainType
-        })}
+        })}}
       />
     </div>
   )
