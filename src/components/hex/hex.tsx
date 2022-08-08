@@ -21,8 +21,6 @@ export const Hex: Component<HexProps> = (props) => {
 
   
   createEffect(() => {
-    console.log({ isActiveHex: props.isActiveHex })
-
     props.isActiveHex
     ? setBorderColor("#b66")
     : setBorderColor("#888");
@@ -79,7 +77,7 @@ export const Hex: Component<HexProps> = (props) => {
       </svg>
 
       <div 
-        class={styles.hexOverlay}
+        class={styles.hexOverlay} // this blocks scroll events because it is absolute-positioned
         onClick={() => {
           console.log('this hex:', { row: props.rowIndex, cell: props.cellIndex })
           props.onClick?.({

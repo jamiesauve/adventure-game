@@ -1,5 +1,6 @@
 .hexContainer {
   opacity: 0.5;
+  height: 100px;
 }
 
 .hexContainer.isActive {
@@ -11,11 +12,12 @@
 }
 
 .hexOverlay {
-  position: absolute;
+  position: relative;
   border: 52px solid rgba(0, 0, 0, 0);
   border-radius: 50px;
   transform: translate(8px, -105px);
   /* background-color: rgba(190, 120, 120, 0.4); */
+  width: 0;
 }
 
 .hexOverlay:hover {

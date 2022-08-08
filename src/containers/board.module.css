@@ -1,12 +1,33 @@
+.viewArea {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+
+  height: 100vh;
+}
+
+.scrollableBoardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+  width: 100%;
+
+  min-height: 100%;
+  overflow-y: scroll;
+}
+
 .board {
-  margin-left: -90px;
+  margin: 10px 0;
 }
 
 .board > .row {
-  margin-top: -50px;
-
   display: flex;
   flex-direction: row;
+}
+
+.board > .row:not(:first-child) {
+  margin-top: -47px;
 }
 
 .board > .row:nth-child(2n) {

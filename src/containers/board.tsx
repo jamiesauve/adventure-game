@@ -28,14 +28,12 @@ const Board: Component = () => {
   const handleClickHex = ((cellData: handleClickHexProps) => {
     const { cellIndex, rowIndex, terrainType } = cellData;
 
-    console.log('coordinates:', { rowIndex, cellIndex })
-
     setCoordinatesOfActiveHex({row: rowIndex, cell: cellIndex});
   });
 
   // TODO: split this out; also make a board generator that takes a configuration to make static maps
   const generateRandomBoard = ({ height, width }: BoardDimensions): JSXElement => {
-    const ROWS_AT_TOP = 1;
+    const ROWS_AT_TOP = 2;
     const ROWS_AT_BOTTOM = 2;
     const CELLS_AT_LEFT_AND_RIGHT = 1;
 
@@ -76,17 +74,6 @@ const Board: Component = () => {
 
                         const terrainType = getRandomTerrainType();
 
-                        // const getIsActive = () => {
-                        //   const isThisActive = (
-                        //     (coordinatesOfActiveHex()?.row ?? 0) + 1 === rowIndex() 
-                        //     && (coordinatesOfActiveHex()?.cell ?? 0) + 1 === cellIndex()
-                        //   );
-                          
-                        //   console.log({ isThisActive })
-
-                        //   return isThisActive;
-                        // };
-
                         return (
                           <Hex
                             cellIndex={IS_ODD_ROW ? cellIndex() : cellIndex() - CELLS_AT_LEFT_AND_RIGHT}
@@ -112,59 +99,63 @@ const Board: Component = () => {
   }
 
   return (
-    <div class={styles.board}>
-      {generateRandomBoard({ height: 6, width: 3 })}
-      {/* <div class={styles.row}>
-        <Hex terrainType={terrainTypes.NONE} /> 
-        <Hex terrainType={terrainTypes.NONE} /> 
-        <Hex terrainType={terrainTypes.NONE} /> 
-        <Hex terrainType={terrainTypes.NONE} /> 
-      </div>
+    <div class={styles.viewArea}>
+      <div className={styles.scrollableBoardContainer}>
+      <div class={styles.board}>
+        {generateRandomBoard({ height: 30, width: 3 })}
+        {/* <div class={styles.row}>
+          <Hex terrainType={terrainTypes.NONE} /> 
+          <Hex terrainType={terrainTypes.NONE} /> 
+          <Hex terrainType={terrainTypes.NONE} /> 
+          <Hex terrainType={terrainTypes.NONE} /> 
+        </div>
 
-      <div class={styles.row}>
-        <Hex onClick={() => console.log("Forest")} terrainType={terrainTypes.FOREST} />
-        <Hex onClick={() => console.log("Meadow")} terrainType={terrainTypes.MEADOW} />
-        <Hex onClick={() => console.log("Forest")} terrainType={terrainTypes.FOREST} />
-        <Hex onClick={() => console.log("Mountains")} terrainType={terrainTypes.MOUNTAINS} />
-      </div>
-    
-      <div class={styles.row}>
-        <Hex terrainType={terrainTypes.NONE} /> 
-        <Hex terrainType={terrainTypes.MEADOW} />
-        <Hex terrainType={terrainTypes.MEADOW} />
-        <Hex terrainType={terrainTypes.MOUNTAINS} />
-        <Hex terrainType={terrainTypes.MOUNTAINS} />
-      </div>
-
-      <div class={styles.row}>
-        <Hex terrainType={terrainTypes.FOREST} />
-        <Hex terrainType={terrainTypes.MOUNTAINS} />
-        <Hex terrainType={terrainTypes.FOREST} />
-        <Hex terrainType={terrainTypes.MEADOW} />
-      </div>
+        <div class={styles.row}>
+          <Hex onClick={() => console.log("Forest")} terrainType={terrainTypes.FOREST} />
+          <Hex onClick={() => console.log("Meadow")} terrainType={terrainTypes.MEADOW} />
+          <Hex onClick={() => console.log("Forest")} terrainType={terrainTypes.FOREST} />
+          <Hex onClick={() => console.log("Mountains")} terrainType={terrainTypes.MOUNTAINS} />
+        </div>
       
-      <div class={styles.row}>
-        <Hex terrainType={terrainTypes.NONE} /> 
-        <Hex terrainType={terrainTypes.MEADOW} />
-        <Hex terrainType={terrainTypes.MOUNTAINS} />
-        <Hex terrainType={terrainTypes.WATER} />
-        <Hex terrainType={terrainTypes.FOREST} />
-      </div>
+        <div class={styles.row}>
+          <Hex terrainType={terrainTypes.NONE} /> 
+          <Hex terrainType={terrainTypes.MEADOW} />
+          <Hex terrainType={terrainTypes.MEADOW} />
+          <Hex terrainType={terrainTypes.MOUNTAINS} />
+          <Hex terrainType={terrainTypes.MOUNTAINS} />
+        </div>
 
-      <div class={styles.row}>
-        <Hex terrainType={terrainTypes.FOREST} />
-        <Hex terrainType={terrainTypes.MOUNTAINS} />
-        <Hex terrainType={terrainTypes.FOREST} />
-        <Hex terrainType={terrainTypes.MOUNTAINS} />
+        <div class={styles.row}>
+          <Hex terrainType={terrainTypes.FOREST} />
+          <Hex terrainType={terrainTypes.MOUNTAINS} />
+          <Hex terrainType={terrainTypes.FOREST} />
+          <Hex terrainType={terrainTypes.MEADOW} />
+        </div>
+        
+        <div class={styles.row}>
+          <Hex terrainType={terrainTypes.NONE} /> 
+          <Hex terrainType={terrainTypes.MEADOW} />
+          <Hex terrainType={terrainTypes.MOUNTAINS} />
+          <Hex terrainType={terrainTypes.WATER} />
+          <Hex terrainType={terrainTypes.FOREST} />
+        </div>
+
+        <div class={styles.row}>
+          <Hex terrainType={terrainTypes.FOREST} />
+          <Hex terrainType={terrainTypes.MOUNTAINS} />
+          <Hex terrainType={terrainTypes.FOREST} />
+          <Hex terrainType={terrainTypes.MOUNTAINS} />
+        </div>
+      
+        <div class={styles.row}>
+          <Hex terrainType={terrainTypes.NONE} /> 
+          <Hex terrainType={terrainTypes.MEADOW} />
+          <Hex terrainType={terrainTypes.FOREST} />
+          <Hex terrainType={terrainTypes.MEADOW} />
+          <Hex terrainType={terrainTypes.MEADOW} />
+        </div> */}
       </div>
-    
-      <div class={styles.row}>
-        <Hex terrainType={terrainTypes.NONE} /> 
-        <Hex terrainType={terrainTypes.MEADOW} />
-        <Hex terrainType={terrainTypes.FOREST} />
-        <Hex terrainType={terrainTypes.MEADOW} />
-        <Hex terrainType={terrainTypes.MEADOW} />
-      </div> */}
+      </div>
     </div>
   )
 }
