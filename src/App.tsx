@@ -1,22 +1,21 @@
 import type { Component } from 'solid-js';
 
-import Board from './containers/board';
+import { ViewArea } from './containers/view-area';
 import Chat from './containers/chat';
 import Menu from './containers/menu';
+
+import { useKeyboard } from './utils/keyboard-actions/use-keyboard';
+
 
 import './app.scss';
 
 const App: Component = () => {
-  
-  // const 
-
-  document.addEventListener("scroll", () => console.log('scrolling'));
-  window.addEventListener("scroll", () => console.log('scrolling'));
+  useKeyboard();
 
   return (
     // <Chat />
     <div class="app">
-      <Board />
+      <ViewArea />
 
       <Menu />
     </div>

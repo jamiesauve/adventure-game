@@ -6,7 +6,7 @@ import { Component, createEffect } from 'solid-js';
 
 import "./hex.scss";
 
-import { TerrainType } from '../terrain/terrain-types';
+import { TerrainType } from '../../data/terrain/terrain-types';
 
 interface HexProps {
   cellIndex: number;
@@ -22,7 +22,7 @@ export const Hex: Component<HexProps> = (props) => {
   
   createEffect(() => {
     props.isActiveHex
-    ? setBorderColor("#b66")
+    ? setBorderColor("#f44")
     : setBorderColor("#888");
   })
 

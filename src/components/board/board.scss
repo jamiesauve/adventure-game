@@ -1,0 +1,20 @@
+.board {
+  margin: 10px 0;
+}
+
+.board > .row {
+  display: flex;
+  flex-direction: row;
+}
+
+.board > .row:not(:first-child) {
+  margin-top: -47px;
+}
+
+.board > .row:nth-child(2n) {
+  margin-left: 95px;
+}
+
+.row > div:not(:first-child) {
+  margin-left: 70px;
+}
