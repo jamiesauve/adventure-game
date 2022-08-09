@@ -1,0 +1,26 @@
+.hex-container {
+  opacity: 0.5;
+  height: 100px;
+  
+  &.isActive {
+    opacity: 1;
+  }
+  
+  &:hover {
+    opacity: 0.9;
+  }
+
+  .hex-overlay {
+    position: relative;
+    border: 52px solid rgba(0, 0, 0, 0);
+    border-radius: 50px;
+    transform: translate(8px, -105px);
+    /* background-color: rgba(190, 120, 120, 0.4); */
+    width: 0;
+    
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+

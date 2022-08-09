@@ -4,9 +4,9 @@ import { createSignal } from 'solid-js';
 
 import { Component, createEffect } from 'solid-js';
 
-import styles from './hex.module.css';
+import "./hex.scss";
 
-import { TerrainType, terrainTypes } from '../terrain/TerrainTypes';
+import { TerrainType } from '../terrain/terrain-types';
 
 interface HexProps {
   cellIndex: number;
@@ -27,7 +27,7 @@ export const Hex: Component<HexProps> = (props) => {
   })
 
   return (
-    <div class={`${styles.hexContainer} ${props.isActiveHex ? styles.isActive : ``}`}>
+    <div class={`hex-container ${props.isActiveHex ? "is-active" : ``}`}>
       <svg viewBox="0 0 120 100" style="width:120px;height:100px">
         <defs>
           <clipPath id="hexagon_clip">
@@ -77,7 +77,7 @@ export const Hex: Component<HexProps> = (props) => {
       </svg>
 
       <div 
-        class={styles.hexOverlay} // this blocks scroll events because it is absolute-positioned
+        class="hex-overlay"
         onClick={() => {
           console.log('this hex:', { row: props.rowIndex, cell: props.cellIndex })
           props.onClick?.({

@@ -1,6 +1,6 @@
 import type { Component } from 'solid-js';
 
-import styles from './chat.module.css';
+import './chat.scss';
 
 interface Message {
   text: string;
@@ -13,25 +13,26 @@ const Chat: Component = () => {
     { text: "message 2" },
     { text: "message 3" },
   ]
+
   return (
-    <div class={styles.chatWindow}>
-      <div class={styles.messageFeed}>
+    <div class="chat">
+      <div class="message-feed">
         {messages.map(message => (
-          <div class={styles.message}>
+          <div class="message">
             {message.text}
           </div>
         ))}
       </div>
 
       <div
-        class={styles.inputArea}
+        class="input-area"
       >
         <textarea
-          class={styles.messageInput}
+          class="message-input"
         />
 
         <button
-          class={styles.sendButton}
+          class="send-button"
         >
           Send
         </button>

@@ -4,8 +4,7 @@ import Board from './containers/board';
 import Chat from './containers/chat';
 import Menu from './containers/menu';
 
-import styles from './app.module.css';
-import { style } from 'solid-js/web';
+import './app.scss';
 
 const App: Component = () => {
   
@@ -16,7 +15,7 @@ const App: Component = () => {
 
   return (
     // <Chat />
-    <div class={styles.app}>
+    <div class="app">
       <Board />
 
       <Menu />

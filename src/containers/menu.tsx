@@ -1,9 +1,9 @@
-import { BattleManager } from './BattleManager';
-import styles from "./menu.module.css";
+import { BattleManager } from './battle-manager';
+import "./menu.scss";
 
 const Menu = () => {
   return (
-    <div className={styles.menu}>
+    <div className="menu">
       <BattleManager />
     </div>
   )
