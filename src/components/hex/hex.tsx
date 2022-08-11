@@ -7,8 +7,10 @@ import { Component, createEffect } from 'solid-js';
 import "./hex.scss";
 
 import { TerrainType } from '../../data/terrain/terrain-types';
+import { AvatarName, avatarTypes } from '../../data/avatars/avatars';
 
 interface HexProps {
+  avatarName: AvatarName;
   cellIndex: number;
   isActiveHex: boolean;
   onClick?: (e: any) => void; 
@@ -26,8 +28,10 @@ export const Hex: Component<HexProps> = (props) => {
     : setBorderColor("#888");
   })
 
+  console.log('thing', avatarTypes[props.avatarName])
+
   return (
-    <div class={`hex-container ${props.isActiveHex ? "is-active" : ``}`}>
+    <div class="hex-container">
       <svg viewBox="0 0 120 100" style="width:120px;height:100px">
         <defs>
           <clipPath id="hexagon_clip">
@@ -73,11 +77,10 @@ export const Hex: Component<HexProps> = (props) => {
           stroke-width="5" 
           fill="transparent"
         />
-
       </svg>
 
       <div 
-        class="hex-overlay"
+        class={`hex-overlay ${props.isActiveHex ? "is-active" : ``}`}
         onClick={() => {
           console.log('this hex:', { row: props.rowIndex, cell: props.cellIndex })
           props.onClick?.({
@@ -85,7 +88,12 @@ export const Hex: Component<HexProps> = (props) => {
           rowIndex: props.rowIndex,
           terrainType: props.terrainType
         })}}
-      />
+      >
+      </div>
+        {
+          props.avatarName !== AvatarName.NONE
+          && <img src={avatarTypes[props.avatarName as AvatarName].svgPath} />
+        }
     </div>
   )
 }

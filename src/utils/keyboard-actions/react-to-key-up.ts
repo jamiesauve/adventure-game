@@ -3,7 +3,6 @@ import { boardDimensionsState } from "../../state/board-dimensions-state";
 
 export type KeyboardKey = "2" | "q" | "w" | "a" | "s" | "z"; // TODO: move this elsewhere
 
-
 export const reactToKeyUp = (key: KeyboardKey) => {
   const { coordinatesOfActiveHex, setCoordinatesOfActiveHex } = activeHexState;
   const currentRowOfActiveHex = coordinatesOfActiveHex().row;
@@ -15,6 +14,7 @@ export const reactToKeyUp = (key: KeyboardKey) => {
   let newCoordinates: Coordinates;
 
   switch(key) {
+    // up left
     case "q": {
       newRowOfActiveHex = currentRowOfActiveHex - 1;
       newCellOfActiveHex = (currentRowOfActiveHex % 2 === 0)
@@ -29,6 +29,7 @@ export const reactToKeyUp = (key: KeyboardKey) => {
       break;
     }
 
+    // up right
     case "w": {
       newRowOfActiveHex = currentRowOfActiveHex - 1;
       newCellOfActiveHex = (currentRowOfActiveHex % 2 === 0)
@@ -43,6 +44,7 @@ export const reactToKeyUp = (key: KeyboardKey) => {
       break;
     }
 
+    // up
     case "2": {
       newRowOfActiveHex = currentRowOfActiveHex - 2;
       newCellOfActiveHex = currentCellOfActiveHex;
@@ -55,6 +57,7 @@ export const reactToKeyUp = (key: KeyboardKey) => {
       break;
     }
 
+    // down
     case "z": {
       newRowOfActiveHex = currentRowOfActiveHex + 2;
       newCellOfActiveHex = currentCellOfActiveHex;
@@ -67,6 +70,7 @@ export const reactToKeyUp = (key: KeyboardKey) => {
       break;
     }
 
+    // down left
     case "a": {
       newRowOfActiveHex = currentRowOfActiveHex + 1;
       newCellOfActiveHex = (currentRowOfActiveHex % 2 === 0)
@@ -81,6 +85,7 @@ export const reactToKeyUp = (key: KeyboardKey) => {
       break;
     }
 
+    // down right
     case "s": {
       newRowOfActiveHex = currentRowOfActiveHex + 1;
       newCellOfActiveHex = (currentRowOfActiveHex % 2 === 0)

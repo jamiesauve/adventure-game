@@ -1,26 +1,42 @@
 .hex-container {
-  opacity: 0.5;
   height: 100px;
-  
-  &.isActive {
-    opacity: 1;
-  }
-  
-  &:hover {
-    opacity: 0.9;
-  }
 
   .hex-overlay {
     position: relative;
-    border: 52px solid rgba(0, 0, 0, 0);
-    border-radius: 50px;
-    transform: translate(8px, -105px);
-    /* background-color: rgba(190, 120, 120, 0.4); */
+    border: 51px solid rgba(0, 0, 0, 0);
+    border-radius: 48px;
+    transform: translate(9px, -104px);
+    background-color: rgb(120, 120, 120);
+
+    opacity: 0.4;
+    height: 0;
     width: 0;
+
+    z-index: 5;
+
+    &.is-active {
+      opacity: 0;
+    }
     
     &:hover {
       cursor: pointer;
+      opacity: 0;
     }
+
+  }
+  img {
+    position: relative;
+    top: -186px;
+    left: 27px;
+
+    width: 60px;
+    height: 60px;
+
+    filter: 
+    drop-shadow(2px 2px 1px black)
+    drop-shadow(2px -2px 1px black)
+    drop-shadow(-2px 2px 1px black)
+    drop-shadow(-2px -2px 1px black);
   }
 }
 

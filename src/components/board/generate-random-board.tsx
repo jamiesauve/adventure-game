@@ -7,6 +7,7 @@ import { terrainTypes, getRandomTerrainType } from "../../data/terrain/terrain-t
 import { BoardDimensions, boardDimensionsState } from "../../state/board-dimensions-state";
 import { activeHexState } from "../../state/active-hex-state";
 import { HandleClickHexProps } from "./board";
+import { AvatarName } from "../../data/avatars/avatars";
 
 interface Props {
   boardDimensions: BoardDimensions,
@@ -48,6 +49,7 @@ export const generateRandomBoard = (props: Props): JSXElement => {
                           isActiveHex={false}
                           rowIndex={-1}
                           terrainType={terrainTypes.NONE}
+                          avatarName={AvatarName.NONE}
                         />
                       )
 
@@ -72,6 +74,7 @@ export const generateRandomBoard = (props: Props): JSXElement => {
                           onClick={props.handleClickHex}
                           rowIndex={rowIndex() - ROWS_AT_TOP}
                           terrainType={terrainType}
+                          avatarName={AvatarName.RABBIT}
                         />
                       )
                     }
