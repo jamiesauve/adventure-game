@@ -26,7 +26,7 @@ export const Board: Component = () => {
   });
 
   const randomBoard = generateRandomBoard({ 
-    boardDimensions: { height: 30, width: 3 },
+    boardDimensions: { height: 8, width: 3 },
     handleClickHex, 
   })
   

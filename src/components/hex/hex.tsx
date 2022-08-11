@@ -20,15 +20,12 @@ interface HexProps {
 
 export const Hex: Component<HexProps> = (props) => {
   const [borderColor, setBorderColor] = createSignal("#888");
-
   
   createEffect(() => {
     props.isActiveHex
     ? setBorderColor("#f44")
     : setBorderColor("#888");
   })
-
-  console.log('thing', avatarTypes[props.avatarName])
 
   return (
     <div class="hex-container">
@@ -82,7 +79,7 @@ export const Hex: Component<HexProps> = (props) => {
       <div 
         class={`hex-overlay ${props.isActiveHex ? "is-active" : ``}`}
         onClick={() => {
-          console.log('this hex:', { row: props.rowIndex, cell: props.cellIndex })
+          console.log('this hex is:', { row: props.rowIndex, cell: props.cellIndex })
           props.onClick?.({
           cellIndex: props.cellIndex,
           rowIndex: props.rowIndex,

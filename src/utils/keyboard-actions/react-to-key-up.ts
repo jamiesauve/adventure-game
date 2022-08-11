@@ -4,10 +4,10 @@ import { boardDimensionsState } from "../../state/board-dimensions-state";
 export type KeyboardKey = "2" | "q" | "w" | "a" | "s" | "z"; // TODO: move this elsewhere
 
 export const reactToKeyUp = (key: KeyboardKey) => {
-  const { coordinatesOfActiveHex, setCoordinatesOfActiveHex } = activeHexState;
-  const currentRowOfActiveHex = coordinatesOfActiveHex().row;
-  const currentCellOfActiveHex = coordinatesOfActiveHex().cell;
-  const boardDimensions = boardDimensionsState.boardDimensions();
+  const { getCoordinatesOfActiveHex, setCoordinatesOfActiveHex } = activeHexState;
+  const currentRowOfActiveHex = getCoordinatesOfActiveHex().row;
+  const currentCellOfActiveHex = getCoordinatesOfActiveHex().cell;
+  const boardDimensions = boardDimensionsState.getBoardDimensions();
 
   let newRowOfActiveHex;
   let newCellOfActiveHex;
@@ -101,7 +101,7 @@ export const reactToKeyUp = (key: KeyboardKey) => {
     }
 
     default: {
-      newCoordinates = coordinatesOfActiveHex();
+      newCoordinates = getCoordinatesOfActiveHex();
     }
 
   }

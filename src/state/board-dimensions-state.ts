@@ -5,9 +5,9 @@ export interface BoardDimensions {
   width: number;
 }
 
-const [ boardDimensions, setBoardDimensions ] = createSignal<BoardDimensions>({ height: 30, width: 3 });
+const [ getBoardDimensions, setBoardDimensions ] = createSignal<BoardDimensions>({ height: 30, width: 3 });
 
 export const boardDimensionsState = {
-  boardDimensions,
+  getBoardDimensions,
   setBoardDimensions
 };

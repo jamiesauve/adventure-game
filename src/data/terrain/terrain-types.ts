@@ -1,5 +1,7 @@
 // SVGs taken from https://freesvg.org/
 
+import { getRandomNumberUpTo } from "../../utils/get-random-number";
+
 export interface TerrainType {
   label: string;
   svgPath: string;
@@ -48,7 +50,7 @@ terrainTypesAsArray.shift(); // remove NONE
 const numberOfTerrainTypes = terrainTypesAsArray.length;
 
 export const getRandomTerrainType = (): TerrainType => {
-  const randomNumber = Math.floor(Math.random() * numberOfTerrainTypes);
+  const randomNumber = getRandomNumberUpTo(numberOfTerrainTypes);
   
   return terrainTypesAsArray[randomNumber];
 }

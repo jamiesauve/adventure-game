@@ -5,9 +5,9 @@ export interface Coordinates {
   cell: number;
 }
 
-const [coordinatesOfActiveHex, setCoordinatesOfActiveHex] = createSignal<Coordinates>({row: 0, cell: 0});
+const [getCoordinatesOfActiveHex, setCoordinatesOfActiveHex] = createSignal<Coordinates>({row: 0, cell: 0});
 
 export const activeHexState = {
-  coordinatesOfActiveHex,
+  getCoordinatesOfActiveHex,
   setCoordinatesOfActiveHex
 }
